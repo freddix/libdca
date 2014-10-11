@@ -1,7 +1,7 @@
 Summary:	DTS Coherent Acoustics decoder
 Name:		libdca
 Version:	0.0.5
-Release:	4
+Release:	5
 License:	GPL
 Group:		Libraries
 Source0:	http://download.videolan.org/pub/videolan/libdca/0.0.5/%{name}-%{version}.tar.bz2
@@ -48,6 +48,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -65,7 +67,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
 %{_includedir}/*.h
 %{_pkgconfigdir}/*.pc
 
